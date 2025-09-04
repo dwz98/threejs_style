@@ -7,9 +7,7 @@ import { useRouteMeta } from "@/hooks/useRouteMeta";
 
 export default function Lesson01() {
 	const textureLoader = new THREE.TextureLoader();
-	const matcapTexture = textureLoader.load(
-		"/public/Text/textures/matcaps/6.png"
-	);
+	const matcapTexture = textureLoader.load("/Text/textures/matcaps/6.png");
 
 	const addTorus = (scene, material) => {
 		const torusGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45);
