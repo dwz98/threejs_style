@@ -58,9 +58,7 @@ export const useThreeScene = (options: UseThreeSceneOptions = {}) => {
 		// 创建场景、相机、渲染器
 		const scene = createScene(backgroundColor);
 		const camera = createCamera();
-		camera.position.x = 1;
-		camera.position.y = 1;
-		camera.position.z = 2;
+		camera.position.set(2, 2, 5);
 
 		const renderer = new THREE.WebGLRenderer({
 			antialias: true,
@@ -85,10 +83,12 @@ export const useThreeScene = (options: UseThreeSceneOptions = {}) => {
 			controls = new OrbitControls(camera, renderer.domElement);
 			controls.enableDamping = true;
 			controlsRef.current = controls;
+			// controls.addEventListener("change", () => {
+			//   console.log('camrea', camera.position);
+			// });
 		}
 
-		// 保存引用
-		sceneRef.current = scene;
+		// 保存引用		sceneRef.current = scene;
 		cameraRef.current = camera;
 		rendererRef.current = renderer;
 

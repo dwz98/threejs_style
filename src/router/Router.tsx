@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+	createBrowserRouter,
+	createHashRouter,
+	RouterProvider,
+} from "react-router-dom";
 import { Suspense } from "react";
 import { routes } from "./index";
 
@@ -11,7 +15,8 @@ function LoadingFallback() {
 	);
 }
 
-const router = createBrowserRouter(routes);
+// const router = createBrowserRouter(routes);
+const router = createHashRouter(routes);
 
 export default function Router() {
 	return (
