@@ -11,7 +11,7 @@ export default function Lesson01() {
 		enableControls: true,
 		enableHelpers: meta?.enableHelpers || false,
 		lightingType: meta?.lightingType || "basic",
-		onSceneReady: (scene) => {
+		onSceneReady: ({ scene }) => {
 			// 创建三个球体
 			const geometry = new THREE.SphereGeometry(1, 32, 32);
 			const material = new THREE.MeshStandardMaterial({
@@ -31,7 +31,7 @@ export default function Lesson01() {
 			sphere3.position.x = 3;
 			scene.add(sphere3);
 		},
-		onAnimate: (scene) => {
+		onAnimate: ({ scene }) => {
 			const spheres = scene.children.filter(
 				(child) => child instanceof THREE.Mesh
 			);

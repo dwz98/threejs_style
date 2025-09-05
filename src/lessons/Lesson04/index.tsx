@@ -11,7 +11,7 @@ export default function Lesson04() {
 		enableControls: true,
 		enableHelpers: meta?.enableHelpers || false,
 		lightingType: meta?.lightingType || "basic",
-		onSceneReady: (scene) => {
+		onSceneReady: ({ scene }) => {
 			// 创建动画几何体
 			const geometry = new THREE.TorusGeometry(2, 0.5, 16, 100);
 			const material = new THREE.MeshStandardMaterial({
@@ -55,7 +55,7 @@ export default function Lesson04() {
 			const particles = new THREE.Points(particleGeometry, particleMaterial);
 			scene.add(particles);
 		},
-		onAnimate: (scene) => {
+		onAnimate: ({ scene }) => {
 			const torus = scene.children.find((child) => child instanceof THREE.Mesh);
 			const particles = scene.children.find(
 				(child) => child instanceof THREE.Points

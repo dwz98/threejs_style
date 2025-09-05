@@ -10,17 +10,8 @@ interface UseThreeSceneOptions {
 	enableControls?: boolean;
 	enableHelpers?: boolean;
 	lightingType?: "basic" | "studio" | "none";
-	onSceneReady?: (
-		scene: THREE.Scene,
-		camera: THREE.Camera,
-		renderer: THREE.WebGLRenderer
-	) => void;
-	onAnimate?: (
-		scene: THREE.Scene,
-		camera: THREE.Camera,
-		renderer: THREE.WebGLRenderer,
-		clock: THREE.Clock
-	) => void;
+	onSceneReady?: any;
+	onAnimate?: any;
 }
 
 export const useThreeScene = (options: UseThreeSceneOptions = {}) => {
@@ -92,24 +83,20 @@ export const useThreeScene = (options: UseThreeSceneOptions = {}) => {
 		cameraRef.current = camera;
 		rendererRef.current = renderer;
 
-		// 调用场景准备回调
-		onSceneReady?.(scene, camera, renderer);
-
-		// 动画循环
 		const clock = new THREE.Clock();
+		// 调用场景准备回调
+		onSceneReady?.({ scene, camera, renderer, controls });
+		// 动画循环
 		const animate = () => {
 			animationIdRef.current = requestAnimationFrame(animate);
-
 			// 调用自定义动画回调
-			onAnimate?.(scene, camera, renderer, clock);
-
+			onAnimate?.({ scene, camera, renderer, clock, controls });
 			if (controls) {
 				controls.update();
 			}
 			renderer.render(scene, camera);
 		};
 		animate();
-
 		// 窗口大小调整
 		const handleResize = () => {
 			renderer.setSize(window.innerWidth, window.innerHeight);
@@ -133,9 +120,5 @@ export const useThreeScene = (options: UseThreeSceneOptions = {}) => {
 
 	return {
 		mountRef,
-		scene: sceneRef.current,
-		camera: cameraRef.current,
-		renderer: rendererRef.current,
-		controls: controlsRef.current,
 	};
 };

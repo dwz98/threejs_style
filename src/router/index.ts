@@ -6,7 +6,8 @@ const Lesson01 = lazy(() => import("@/lessons/Lesson01"));
 const Lesson02 = lazy(() => import("@/lessons/Lesson02"));
 const Lesson03 = lazy(() => import("@/lessons/Lesson03"));
 const Lesson04 = lazy(() => import("@/lessons/Lesson04"));
-const Text = lazy(() => import("@/lessons/Text"));
+const Text = lazy(() => import("@/lessons/01-basics/Text"));
+const Lights = lazy(() => import("@/lessons/02-classic-techniques/Lights"));
 
 // 路由配置
 export const routes = [
@@ -73,6 +74,18 @@ export const routes = [
 		meta: {
 			title: "Text字体",
 			description: "掌握导入字体，并使用Text创建文字",
+			icon: "🎬",
+			backgroundColor: "#1a1a2e",
+			lightingType: "basic",
+			enableHelpers: true,
+		},
+	},
+	{
+		path: "/Lights",
+		Component: Lights,
+		meta: {
+			title: "Lights灯光使用",
+			description: "学习各种灯光的使用，以及各种用法",
 			icon: "🎬",
 			backgroundColor: "#1a1a2e",
 			lightingType: "basic",

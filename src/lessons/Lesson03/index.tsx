@@ -8,7 +8,7 @@ export default function Lesson03() {
 		enableControls: true,
 		enableHelpers: true,
 		lightingType: "studio",
-		onSceneReady: (scene) => {
+		onSceneReady: ({ scene }) => {
 			// 创建多个光源演示
 			const geometry = new THREE.SphereGeometry(0.5, 16, 16);
 			const material = new THREE.MeshStandardMaterial({
@@ -38,7 +38,7 @@ export default function Lesson03() {
 			pointLight3.position.set(0, 5, 0);
 			scene.add(pointLight3);
 		},
-		onAnimate: (scene) => {
+		onAnimate: ({ scene }) => {
 			const spheres = scene.children.filter(
 				(child) => child instanceof THREE.Mesh
 			);

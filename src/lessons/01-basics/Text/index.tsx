@@ -39,7 +39,7 @@ export default function Lesson01() {
 		enableControls: true,
 		enableHelpers: meta?.enableHelpers || false,
 		lightingType: meta?.lightingType || "basic",
-		onSceneReady: (scene, camera, renderer) => {
+		onSceneReady: ({ scene, camera, renderer }) => {
 			camera.position.x = 1;
 			camera.position.y = 1;
 			camera.position.z = 2;
@@ -84,7 +84,7 @@ export default function Lesson01() {
 				}
 			);
 		},
-		onAnimate: (scene) => {},
+		onAnimate: ({ scene }) => {},
 	});
 
 	return (

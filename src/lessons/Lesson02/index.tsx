@@ -11,7 +11,7 @@ export default function Lesson02() {
 		enableControls: true,
 		enableHelpers: meta?.enableHelpers || false,
 		lightingType: meta?.lightingType || "studio",
-		onSceneReady: (scene) => {
+		onSceneReady: ({scene}) => {
 			// 创建不同材质的立方体
 			const geometry = new THREE.BoxGeometry(2, 2, 2);
 
@@ -32,7 +32,7 @@ export default function Lesson02() {
 				scene.add(cube);
 			});
 		},
-		onAnimate: (scene) => {
+		onAnimate: ({scene}) => {
 			const cubes = scene.children.filter(
 				(child) => child instanceof THREE.Mesh
 			);
